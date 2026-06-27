@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI美业素材生成器 | 商品详情图 使用对比图</title>
+  <meta name="description" content="面向美业工厂的AI素材生成工具，支持上传产品图、模特图和对比图，生成商品详情图、使用对比图、卖点海报和客户沟通图。">
+  <meta name="theme-color" content="#f7f2ec">
+  <link rel="preconnect" href="https://unpkg.com">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      --paper: #f7f2ec;
+      --panel: #fffaf4;
+      --ink: #211d1a;
+      --muted: #746a61;
+      --line: #e5d8ca;
+      --rose: #b85a6b;
+      --rose-dark: #8f3449;
+      --sage: #687a63;
+      --mist: #e7ede2;
+      --gold: #bd9650;
+      --shadow: 0 24px 70px rgba(45, 35, 26, .13);
+      --radius: 10px;
+      --max: 1220px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(184, 90, 107, .13), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(104, 122, 99, .18), transparent 33%),
+        linear-gradient(135deg, #fbf7f1 0%, #f2e9dd 52%, #e9efe4 100%);
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 242, 236, .84);
+      border-bottom: 1px solid rgba(229, 216, 202, .8);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+    }
+
+    .brand-mark {
+      width: 42px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 800;
+      white-space: nowrap;
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .btn.rose {
+      background: var(--rose-dark);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: .58;
+      transform: none;
+    }
+
+    .hero {
+      padding: 68px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      color: var(--rose-dark);
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(229, 216, 202, .9);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 18px 0 16px;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .hero-card {
+      padding: 20px;
+      background: rgba(255, 250, 244, .86);
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .hero-card p {
+      margin: 0 0 16px;
+      font-size: 14px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 430px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 26px 0 86px;
+    }
+
+    .panel {
+      background: rgba(255, 250, 244, .92);
+      border: 1px solid rgba(229, 216, 202, .92);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 54px rgba(45, 35, 26, .08);
+    }
+
+    .control-panel {
+      position: sticky;
+      top: 94px;
+      padding: 18px;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .panel-title h2,
+    .result-head h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .status-pill {
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+      color: var(--sage);
+      background: var(--mist);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      color: #4d443e;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(184, 90, 107, .15);
+    }
+
+    .upload-grid {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .upload-card {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      background: #fff;
+      border: 1px dashed #d7c4b4;
+      border-radius: 8px;
+    }
+
+    .upload-preview {
+      width: 62px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #f2e8dd;
+      border-radius: 8px;
+      color: var(--rose-dark);
+    }
+
+    .upload-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .upload-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .upload-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .upload-card input {
+      margin-top: 8px;
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .option {
+      min-height: 82px;
+      padding: 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .option.active {
+      border-color: var(--rose-dark);
+      box-shadow: 0 0 0 3px rgba(184, 90, 107, .12);
+    }
+
+    .option strong,
+    .option span {
+      display: block;
+    }
+
+    .option span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .result-panel {
+      overflow: hidden;
+    }
+
+    .result-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .preview-stage {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      min-height: 520px;
+    }
+
+    .source-column {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .source-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .source-tile {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .source-tile img,
+    .source-empty {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .source-empty {
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      background:
+        linear-gradient(135deg, rgba(184, 90, 107, .08), transparent),
+        #f6eee6;
+      font-size: 13px;
+    }
+
+    .source-tile div {
+      padding: 9px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .generated-column {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .generated-card {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .76), rgba(231, 237, 226, .82)),
+        repeating-linear-gradient(90deg, transparent 0 42px, rgba(33, 29, 26, .04) 43px 44px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .generated-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .placeholder {
+      width: min(100% - 34px, 520px);
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .placeholder i {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      color: var(--rose-dark);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+
+    .placeholder strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .generated-meta {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      color: var(--muted);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .prompt-box {
+      white-space: pre-wrap;
+      color: #4b423b;
+    }
+
+    .toast {
+      min-height: 24px;
+      color: var(--rose-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      color: var(--ink);
+      background: rgba(255, 250, 244, .82);
+      backdrop-filter: blur(8px);
+      font-weight: 900;
+    }
+
+    .loading.active {
+      display: grid;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .workspace,
+      .preview-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .control-panel {
+        position: static;
+      }
+
+      .source-column {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .nav {
+        height: auto;
+        padding: 12px 0;
+        align-items: flex-start;
+      }
+
+      .nav-actions {
+        display: none;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">AI</span>
+        <span>美业素材生成器<small>Factory Creative Studio</small></span>
+      </a>
+      <div class="nav-actions">
+        <a class="btn secondary" href="index.html"><i data-lucide="home"></i>返回官网</a>
+        <a class="btn" href="#workspace"><i data-lucide="wand-sparkles"></i>开始生成</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <span class="eyebrow"><i data-lucide="sparkles"></i> 小鸡聚合上游画图接口 · 美业工厂专用</span>
+        <h1>上传产品和案例图，生成客户能看懂的详情素材。</h1>
+        <p>面向面部护理、微针胶原、体雕、线雕和皮肉贴合产品，快速生成商品详情图、使用对比图、卖点海报和客户沟通图。</p>
+      </div>
+      <aside class="hero-card">
+        <strong>安全接入方式</strong>
+        <p>API Key 只放在本地服务环境变量里，浏览器页面不会直接暴露密钥。</p>
+        <a class="btn rose" href="#workspace"><i data-lucide="image-plus"></i>打开工作台</a>
+      </aside>
+    </div>
+  </section>
+
+  <main class="shell workspace" id="workspace">
+    <form class="panel control-panel" id="generatorForm">
+      <div class="panel-title">
+        <h2>生成设置</h2>
+        <span class="status-pill"><i data-lucide="shield-check"></i>本地代理</span>
+      </div>
+
+      <div class="upload-grid">
+        <label class="upload-card">
+          <span class="upload-preview" data-preview="product"><i data-lucide="package"></i></span>
+          <span>
+            <strong>产品图</strong>
+            <span>瓶身、盒子、套盒、仪器或原料图</span>
+            <input type="file" accept="image/*" data-upload="product">
+          </span>
+        </label>
+        <label class="upload-card">
+          <span class="upload-preview" data-preview="before"><i data-lucide="user-round"></i></span>
+          <span>
+            <strong>使用前图片</strong>
+            <span>皮肤状态、面部轮廓或身体局部</span>
+            <input type="file" accept="image/*" data-upload="before">
+          </span>
+        </label>
+        <label class="upload-card">
+          <span class="upload-preview" data-preview="after"><i data-lucide="sparkle"></i></span>
+          <span>
+            <strong>使用后图片</strong>
+            <span>用于生成使用对比图</span>
+            <input type="file" accept="image/*" data-upload="after">
+          </span>
+        </label>
+      </div>
+
+      <div class="field">
+        <label for="productName">产品名称</label>
+        <input id="productName" name="productName" placeholder="如：微针胶原修护精华">
+      </div>
+
+      <div class="field">
+        <label for="productLine">产品方向</label>
+        <select id="productLine" name="productLine">
+          <option>微针胶原</option>
+          <option>面部护理</option>
+          <option>体雕管理</option>
+          <option>线雕提升</option>
+          <option>皮肉贴合</option>
+          <option>术后修护</option>
+        </select>
+      </div>
+
+      <label class="field" for="sellingPoints">
+        <span>核心卖点</span>
+        <textarea id="sellingPoints" name="sellingPoints" placeholder="如：胶原修护、舒缓泛红、提升皮肤细腻度、适合院线护理后搭配"></textarea>
+      </label>
+
+      <div class="field">
+        <label>生成类型</label>
+        <div class="option-grid" id="typeOptions">
+          <button class="option active" type="button" data-value="detail">
+            <strong>商品详情图</strong>
+            <span>详情页首屏、产品卖点、适合人群</span>
+          </button>
+          <button class="option" type="button" data-value="compare">
+            <strong>使用对比图</strong>
+            <span>前后状态对比，适合客户沟通</span>
+          </button>
+          <button class="option" type="button" data-value="poster">
+            <strong>卖点海报</strong>
+            <span>朋友圈、小红书、招商素材</span>
+          </button>
+          <button class="option" type="button" data-value="explain">
+            <strong>讲解长图</strong>
+            <span>原理、流程、护理建议</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="stylePreset">视觉风格</label>
+        <select id="stylePreset" name="stylePreset">
+          <option>高端院线风</option>
+          <option>科技功效风</option>
+          <option>温柔护肤风</option>
+          <option>小红书种草风</option>
+          <option>极简电商详情风</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="modelName">上游模型</label>
+        <input id="modelName" name="modelName" value="gpt-image-1">
+      </div>
+
+      <div class="field">
+        <label for="imageSize">图片尺寸</label>
+        <select id="imageSize" name="imageSize">
+          <option value="1024x1024">方图 1024x1024</option>
+          <option value="1024x1536">竖图 1024x1536</option>
+          <option value="1536x1024">横图 1536x1024</option>
+        </select>
+      </div>
+
+      <button class="btn rose" id="generateBtn" type="submit"><i data-lucide="wand-sparkles"></i>生成展示图</button>
+      <div class="toast" id="formToast" role="status" aria-live="polite"></div>
+    </form>
+
+    <section class="panel result-panel" aria-label="生成结果">
+      <div class="result-head">
+        <div>
+          <h2>生成预览</h2>
+          <div class="toast" id="resultToast">上传图片并点击生成，会在这里展示小鸡聚合返回的结果。</div>
+        </div>
+        <div class="result-actions">
+          <button class="btn secondary" id="exportPromptBtn" type="button"><i data-lucide="file-text"></i>输出提示词</button>
+          <button class="btn secondary" id="copyPromptBtn" type="button"><i data-lucide="copy"></i>复制提示词</button>
+          <a class="btn secondary" id="downloadBtn" href="#" download="beauty-ai-result.png" aria-disabled="true"><i data-lucide="download"></i>下载图片</a>
+        </div>
+      </div>
+
+      <div class="preview-stage">
+        <aside class="source-column">
+          <div class="source-grid" id="sourceGrid">
+            <div class="source-tile"><div class="source-empty">产品图预览</div><div>产品图</div></div>
+            <div class="source-tile"><div class="source-empty">使用前预览</div><div>使用前</div></div>
+            <div class="source-tile"><div class="source-empty">使用后预览</div><div>使用后</div></div>
+          </div>
+        </aside>
+
+        <div class="generated-column">
+          <div class="generated-card" id="generatedCard">
+            <div class="placeholder" id="placeholder">
+              <i data-lucide="image"></i>
+              <strong>还没有生成图片</strong>
+              <span>配置 `XIAOJI_API_KEY` 后，这里会显示上游画图接口返回的商品详情图或使用对比图。</span>
+            </div>
+            <div class="loading" id="loading">正在请求小鸡聚合画图接口...</div>
+          </div>
+
+          <div class="generated-meta">
+            <strong>本次提示词</strong>
+            <div class="prompt-box" id="promptBox">等待生成。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      const uploads = {};
+      let selectedType = "detail";
+      let lastPrompt = "";
+      let lastImageUrl = "";
+
+      const typeLabels = {
+        detail: "商品详情图",
+        compare: "使用对比图",
+        poster: "卖点海报",
+        explain: "讲解长图"
+      };
+
+      const typeDirections = {
+        detail: "生成电商商品详情图，包含产品主视觉、核心卖点、适合人群、使用场景、护理建议，版式高级清晰。",
+        compare: "生成使用前后对比图，左右对比或上下对比，强调护理前后状态展示，不夸大医疗效果。",
+        poster: "生成社媒卖点海报，适合朋友圈、小红书和招商沟通，突出产品质感与核心利益点。",
+        explain: "生成客户沟通讲解长图，包含产品原理、护理流程、注意事项和适合人群。"
+      };
+
+      const form = document.querySelector("#generatorForm");
+      const formToast = document.querySelector("#formToast");
+      const resultToast = document.querySelector("#resultToast");
+      const promptBox = document.querySelector("#promptBox");
+      const generatedCard = document.querySelector("#generatedCard");
+      const placeholder = document.querySelector("#placeholder");
+      const loading = document.querySelector("#loading");
+      const generateBtn = document.querySelector("#generateBtn");
+      const exportPromptBtn = document.querySelector("#exportPromptBtn");
+      const copyPromptBtn = document.querySelector("#copyPromptBtn");
+      const downloadBtn = document.querySelector("#downloadBtn");
+      const sourceGrid = document.querySelector("#sourceGrid");
+      let requestInFlight = false;
+
+      const fileToDataUrl = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const renderUploadPreview = (key, dataUrl) => {
+        const preview = document.querySelector(`[data-preview="${key}"]`);
+        preview.innerHTML = `<img src="${dataUrl}" alt="${key} 预览">`;
+        renderSources();
+      };
+
+      const renderSources = () => {
+        const items = [
+          ["product", "产品图"],
+          ["before", "使用前"],
+          ["after", "使用后"]
+        ];
+        sourceGrid.innerHTML = items.map(([key, label]) => {
+          const item = uploads[key];
+          const media = item ? `<img src="${item.dataUrl}" alt="${label}预览">` : `<div class="source-empty">${label}预览</div>`;
+          return `<div class="source-tile">${media}<div>${label}</div></div>`;
+        }).join("");
+      };
+
+      const buildPrompt = (formData) => {
+        const productName = formData.get("productName") || "美业护理产品";
+        const productLine = formData.get("productLine") || "面部护理";
+        const sellingPoints = formData.get("sellingPoints") || "突出产品质感、护理体验、适合人群和客户沟通价值";
+        const stylePreset = formData.get("stylePreset") || "高端院线风";
+        const typeText = typeLabels[selectedType];
+        const direction = typeDirections[selectedType];
+        const hasCompare = uploads.before && uploads.after;
+        const hasProduct = uploads.product;
+
+        return [
+          `为美业工厂生成一张${typeText}。`,
+          `产品名称：${productName}。`,
+          `产品方向：${productLine}。`,
+          `核心卖点：${sellingPoints}。`,
+          `视觉风格：${stylePreset}。`,
+          `画面要求：${direction}`,
+          hasProduct ? "参考上传产品图的产品类型和高级包装质感。" : "生成干净高级的护肤产品主视觉。",
+          hasCompare ? "参考使用前后概念做克制对比版式。" : "用专业克制方式呈现护理状态示意。",
+          "中文文案清晰，适合详情页和客户展示。避免治疗、永久、百分百、立刻见效等不合规表达。"
+        ].join("\n");
+      };
+
+      const buildImagePayload = async (formData) => {
+        const payload = {
+          model: formData.get("modelName") || "gpt-image-1",
+          prompt: lastPrompt,
+          size: formData.get("imageSize") || "1024x1024",
+          n: 1
+        };
+        const images = [];
+        if (uploads.product) {
+          images.push({ name: uploads.product.name || "product.png", dataUrl: uploads.product.dataUrl });
+        }
+        if (selectedType === "compare") {
+          if (uploads.before) images.push({ name: uploads.before.name || "before.png", dataUrl: uploads.before.dataUrl });
+          if (uploads.after) images.push({ name: uploads.after.name || "after.png", dataUrl: uploads.after.dataUrl });
+        } else if (uploads.before) {
+          images.push({ name: uploads.before.name || "before.png", dataUrl: uploads.before.dataUrl });
+        }
+        if (images.length > 0) {
+          payload.images = images;
+        }
+        return payload;
+      };
+
+      const extractImageUrl = (payload) => {
+        const first = payload && payload.data && payload.data[0];
+        if (!first) return "";
+        if (first.url) return first.url;
+        if (first.b64_json) return `data:image/png;base64,${first.b64_json}`;
+        if (first.image_url) return first.image_url;
+        return "";
+      };
+
+      const getErrorMessage = (payload) => {
+        if (!payload) return "上游接口返回错误";
+        if (payload.error === "Image generation proxy failed." && payload.detail) return payload.detail;
+        if (payload.detail) return payload.detail;
+        if (typeof payload.error === "string") return payload.error;
+        if (payload.error && payload.error.message) return payload.error.message;
+        if (payload.message) return payload.message;
+        if (payload.error && payload.error.detail) return payload.error.detail;
+        return "上游接口返回错误";
+      };
+
+      document.querySelectorAll("[data-upload]").forEach((input) => {
+        input.addEventListener("change", async () => {
+          const file = input.files && input.files[0];
+          if (!file) return;
+          const key = input.dataset.upload;
+          const dataUrl = await fileToDataUrl(file);
+          uploads[key] = { name: file.name, dataUrl };
+          renderUploadPreview(key, dataUrl);
+        });
+      });
+
+      document.querySelectorAll("#typeOptions .option").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#typeOptions .option").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          selectedType = button.dataset.value;
+        });
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (requestInFlight) {
+          resultToast.textContent = "正在生成中，请稍等一下。";
+          return;
+        }
+        const formData = new FormData(form);
+        lastPrompt = buildPrompt(formData);
+        promptBox.textContent = lastPrompt;
+        formToast.textContent = "";
+        resultToast.textContent = "正在生成，请稍等。";
+        loading.classList.add("active");
+        generateBtn.disabled = true;
+        requestInFlight = true;
+
+        try {
+          const payload = await buildImagePayload(formData);
+          let response;
+          let data;
+          let lastError = null;
+          for (let attempt = 1; attempt <= 3; attempt++) {
+            response = await fetch("/api/generate-image", {
+              method: "POST",
+              headers: { "Content-Type": "application/json; charset=utf-8" },
+              body: JSON.stringify(payload)
+            });
+            data = await response.json().catch(() => ({}));
+            if (response.ok) break;
+            lastError = new Error(getErrorMessage(data));
+            const retryable = [429, 500, 502, 503, 504].includes(response.status);
+            if (!retryable || attempt === 3) {
+              throw lastError;
+            }
+            resultToast.textContent = `当前排队较多，正在自动重试 ${attempt}/3。`;
+            await new Promise((resolve) => setTimeout(resolve, 1200 * attempt));
+          }
+
+          const imageUrl = extractImageUrl(data);
+          if (!imageUrl) {
+            throw new Error("接口已返回，但没有找到图片 URL 或 b64_json。");
+          }
+
+          lastImageUrl = imageUrl;
+          placeholder.remove();
+          generatedCard.querySelectorAll("img").forEach((img) => img.remove());
+          const img = document.createElement("img");
+          img.src = imageUrl;
+          img.alt = "AI生成的美业展示图";
+          generatedCard.appendChild(img);
+          downloadBtn.href = imageUrl;
+          downloadBtn.setAttribute("aria-disabled", "false");
+          resultToast.textContent = "生成完成，可以下载或复制提示词继续调整。";
+        }
+        catch (error) {
+          resultToast.textContent = error.message;
+          formToast.textContent = "如果还在排队，我已经帮你自动重试过了；可以换一张图或稍后再试。";
+        }
+        finally {
+          loading.classList.remove("active");
+          generateBtn.disabled = false;
+          requestInFlight = false;
+        }
+      });
+
+      exportPromptBtn.addEventListener("click", async () => {
+        if (!lastPrompt) {
+          const formData = new FormData(form);
+          lastPrompt = buildPrompt(formData);
+          promptBox.textContent = lastPrompt;
+        }
+        await navigator.clipboard.writeText(lastPrompt);
+        resultToast.textContent = "提示词已输出并复制，可直接粘贴给客户或继续生成。";
+      });
+
+      copyPromptBtn.addEventListener("click", async () => {
+        if (!lastPrompt) {
+          resultToast.textContent = "还没有生成提示词。";
+          return;
+        }
+        await navigator.clipboard.writeText(lastPrompt);
+        resultToast.textContent = "提示词已复制。";
+      });
+
+      downloadBtn.addEventListener("click", (event) => {
+        if (!lastImageUrl) {
+          event.preventDefault();
+          resultToast.textContent = "还没有可下载的生成图。";
+        }
+      });
+
+      renderSources();
+    });
+  </script>
+</body>
+</html>
