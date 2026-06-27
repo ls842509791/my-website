@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>澜境美学 | 面部护理 微针胶原 体雕 线雕 皮肉贴合</title>
+  <meta name="description" content="澜境美学专注面部护理、微针胶原、体雕、线雕与皮肉贴合管理，提供在线预约、项目介绍、案例展示和到店咨询。">
+  <meta name="theme-color" content="#fbf7f2">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      --paper: #fbf7f2;
+      --cream: #fffdf9;
+      --ink: #23201d;
+      --muted: #706963;
+      --line: #e6ddd3;
+      --rose: #c86f7e;
+      --rose-dark: #9e4356;
+      --moss: #62745d;
+      --sage: #d7dfd2;
+      --clay: #b28a68;
+      --gold: #c8a15a;
+      --shadow: 0 20px 60px rgba(38, 31, 25, .13);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(100% - 40px, var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 30;
+      background: rgba(251, 247, 242, .86);
+      border-bottom: 1px solid rgba(230, 221, 211, .9);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 42px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    .brand-name {
+      display: grid;
+      gap: 1px;
+    }
+
+    .brand-name strong {
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .brand-name span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: #4c4641;
+      font-size: 15px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn,
+    .btn,
+    .chip,
+    .tab {
+      border: 0;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .icon-btn {
+      width: 42px;
+      aspect-ratio: 1;
+      display: none;
+      place-items: center;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .btn.rose {
+      background: var(--rose-dark);
+    }
+
+    .btn:hover,
+    .icon-btn:hover,
+    .chip:hover,
+    .tab:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: 94vh;
+      padding: 118px 0 42px;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(90deg, rgba(28, 24, 21, .72), rgba(28, 24, 21, .42) 46%, rgba(28, 24, 21, .12)),
+        url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2200&q=85") center/cover;
+      color: #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 34px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      font-size: 13px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero h1 {
+      max-width: 780px;
+      margin: 18px 0 16px;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 0 30px;
+      color: rgba(255,255,255,.86);
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 150px));
+      gap: 14px;
+    }
+
+    .metric {
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.34);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 25px;
+    }
+
+    .metric span {
+      color: rgba(255,255,255,.74);
+      font-size: 13px;
+    }
+
+    .booking-panel {
+      background: rgba(255,253,249,.96);
+      color: var(--ink);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.56);
+    }
+
+    .booking-panel h2 {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+
+    .booking-panel > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      color: #4c4641;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 78px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(200, 111, 126, .16);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .form-note {
+      min-height: 22px;
+      color: var(--moss);
+      font-size: 13px;
+    }
+
+    .booking-records {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .records-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .records-head strong {
+      font-size: 15px;
+    }
+
+    .text-btn {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--rose-dark);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .record-list {
+      display: grid;
+      gap: 8px;
+      max-height: 180px;
+      overflow: auto;
+    }
+
+    .record-item {
+      display: grid;
+      gap: 2px;
+      padding: 10px;
+      background: #f8f2ec;
+      border: 1px solid #eee2d8;
+      border-radius: var(--radius);
+      font-size: 13px;
+    }
+
+    .record-item span {
+      color: var(--muted);
+    }
+
+    main section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 430px);
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--rose-dark);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 8px 0 0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .service-band {
+      background: var(--cream);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .tab {
+      min-height: 42px;
+      padding: 0 15px;
+      color: #534c46;
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .tab.active {
+      color: #fff;
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card,
+    .artist-card,
+    .review-card,
+    .member-card,
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .service-card {
+      display: grid;
+      min-height: 305px;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 166px;
+      object-fit: cover;
+    }
+
+    .service-copy {
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+    }
+
+    .service-title h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .price {
+      color: var(--rose-dark);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service-card .btn {
+      min-height: 38px;
+      padding: 0 12px;
+      justify-self: start;
+      font-size: 13px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      padding: 3px 8px;
+      color: #50463d;
+      background: #f4eee8;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .gallery-main,
+    .gallery-side figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #ddd;
+    }
+
+    .gallery-main {
+      min-height: 590px;
+    }
+
+    .gallery-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .gallery-side figure {
+      min-height: 286px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .caption {
+      position: absolute;
+      inset: auto 16px 16px;
+      width: calc(100% - 32px);
+      padding: 13px 14px;
+      background: rgba(255,253,249,.9);
+      color: var(--ink);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+    }
+
+    .caption strong,
+    .caption span {
+      display: block;
+    }
+
+    .caption span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .artists {
+      background: #eff3ea;
+    }
+
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .artist-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .artist-card div {
+      padding: 15px;
+    }
+
+    .artist-card h3 {
+      margin: 0 0 5px;
+      font-size: 19px;
+    }
+
+    .artist-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .member-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .member-visual {
+      border-radius: var(--radius);
+      min-height: 440px;
+      background:
+        linear-gradient(180deg, rgba(35,32,29,.05), rgba(35,32,29,.5)),
+        url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1400&q=85") center/cover;
+      display: flex;
+      align-items: end;
+      padding: 22px;
+      color: #fff;
+    }
+
+    .member-visual h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .member-card {
+      padding: 22px;
+    }
+
+    .member-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .member-card .price {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .member-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .reviews {
+      background: var(--cream);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .review-card {
+      padding: 22px;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 17px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .review-card p {
+      margin: 0 0 18px;
+      color: #403934;
+    }
+
+    .review-card strong {
+      display: block;
+    }
+
+    .review-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-row i {
+      width: 44px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--rose-dark);
+    }
+
+    .info-row strong,
+    .info-row span {
+      display: block;
+    }
+
+    .info-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .map {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0)),
+        repeating-linear-gradient(0deg, transparent 0 52px, rgba(35,32,29,.08) 53px 54px),
+        repeating-linear-gradient(90deg, transparent 0 62px, rgba(35,32,29,.08) 63px 64px),
+        #d8dfd1;
+      border: 1px solid var(--line);
+    }
+
+    .road {
+      position: absolute;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(35,32,29,.08);
+    }
+
+    .road.one {
+      width: 112%;
+      height: 56px;
+      left: -6%;
+      top: 47%;
+      transform: rotate(-9deg);
+    }
+
+    .road.two {
+      width: 54px;
+      height: 120%;
+      left: 57%;
+      top: -10%;
+      transform: rotate(13deg);
+    }
+
+    .pin {
+      position: absolute;
+      left: 52%;
+      top: 42%;
+      width: 54px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--rose-dark);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 14px 36px rgba(158, 67, 86, .35);
+    }
+
+    .pin i {
+      transform: rotate(45deg);
+    }
+
+    .map-card {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      width: min(330px, calc(100% - 44px));
+      padding: 18px;
+      background: rgba(255,253,249,.93);
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .map-card h3 {
+      margin: 0 0 6px;
+    }
+
+    .map-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .faq {
+      background: #f5eee7;
+    }
+
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 18px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: rgba(255,255,255,.74);
+      background: var(--ink);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner strong {
+      color: #fff;
+    }
+
+    .mobile-dock {
+      position: fixed;
+      z-index: 35;
+      inset: auto 12px 12px;
+      display: none;
+      gap: 8px;
+      padding: 8px;
+      background: rgba(255,253,249,.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 40px rgba(35,32,29,.16);
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-dock .btn {
+      flex: 1;
+      min-height: 44px;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        left: 20px;
+        right: 20px;
+        top: 82px;
+        display: none;
+        padding: 18px;
+        background: rgba(255,253,249,.97);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: grid;
+      }
+
+      .icon-btn {
+        display: grid;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .section-head,
+      .gallery,
+      .member-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        max-width: 720px;
+      }
+
+      .booking-panel {
+        max-width: 560px;
+      }
+
+      .service-grid,
+      .review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .artist-grid,
+      .member-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar {
+        position: sticky;
+      }
+
+      .nav {
+        height: 64px;
+      }
+
+      .brand-name span {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0 28px;
+        background-position: 58% center;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .hero-actions {
+        display: none;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metric:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .form-row,
+      .service-grid,
+      .artist-grid,
+      .member-grid,
+      .review-grid,
+      .faq-list {
+        grid-template-columns: 1fr;
+      }
+
+      main section {
+        padding: 58px 0;
+      }
+
+      .section-head {
+        margin-bottom: 24px;
+      }
+
+      .tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+      }
+
+      .tab {
+        min-width: max-content;
+      }
+
+      .gallery-main,
+      .gallery-side figure,
+      .member-visual,
+      .map {
+        min-height: 360px;
+      }
+
+      .mobile-dock {
+        display: flex;
+      }
+
+      footer {
+        padding-bottom: 86px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="澜境美学首页">
+        <span class="brand-mark">L</span>
+        <span class="brand-name">
+          <strong>澜境美学</strong>
+          <span>Face & Body Aesthetics</span>
+        </span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#services">项目</a>
+        <a href="#gallery">案例</a>
+        <a href="#artists">美学师</a>
+        <a href="#membership">会员</a>
+        <a href="ai-generator.html">AI生图</a>
+        <a href="#contact">到店</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="打开导航">
+          <i data-lucide="menu"></i>
+        </button>
+        <a class="btn secondary" href="ai-generator.html"><i data-lucide="wand-sparkles"></i>AI生图</a>
+        <a class="btn" href="#booking"><i data-lucide="calendar-check"></i>立即预约</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="shell hero-grid">
+      <div>
+        <span class="eyebrow"><i data-lucide="sparkles"></i> 面部护理 · 微针胶原 · 体雕 · 线雕</span>
+        <h1>做面部年轻化，也做身体轮廓管理。</h1>
+        <p>围绕胶原激活、轮廓提升、体态线条和皮肉贴合，建立一对一评估与周期管理方案。</p>
+        <div class="hero-actions">
+          <a class="btn rose" href="#booking"><i data-lucide="calendar-days"></i>预约本周档期</a>
+          <a class="btn secondary" href="#services"><i data-lucide="list-checks"></i>查看项目价格</a>
+        </div>
+        <div class="metrics" aria-label="门店数据">
+          <div class="metric">
+            <strong>12,000+</strong>
+            <span>累计服务人次</span>
+          </div>
+          <div class="metric">
+            <strong>4.9/5</strong>
+            <span>顾客综合评分</span>
+          </div>
+          <div class="metric">
+            <strong>18:00</strong>
+            <span>工作日可约评估档</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="booking-panel" id="booking" aria-label="预约表单">
+        <h2>预约到店</h2>
+        <p>提交后由顾问确认档期，可替换为微信、企微或第三方预约系统。</p>
+        <form class="form" id="bookingForm">
+          <div class="field">
+            <label for="name">称呼</label>
+            <input id="name" name="name" autocomplete="name" placeholder="如：王女士" required>
+          </div>
+          <div class="field">
+            <label for="phone">手机号</label>
+            <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="用于确认预约" required>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="service">意向项目</label>
+              <select id="service" name="service">
+                <option>面部护理</option>
+                <option>微针胶原</option>
+                <option>体雕管理</option>
+                <option>线雕提升</option>
+                <option>皮肉贴合</option>
+                <option>新客面诊</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="time">偏好时间</label>
+              <select id="time" name="time">
+                <option>今天</option>
+                <option>明天</option>
+                <option>本周末</option>
+                <option>工作日晚间</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn rose" type="submit"><i data-lucide="send"></i>提交预约</button>
+          <div class="form-note" id="formNote" role="status" aria-live="polite"></div>
+        </form>
+        <div class="booking-records" aria-label="预约记录">
+          <div class="records-head">
+            <strong>本机预约记录</strong>
+            <button class="text-btn" id="clearBookings" type="button">清空</button>
+          </div>
+          <div class="record-list" id="bookingList"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section class="service-band" id="services">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Service Menu</span>
+            <h2>把面部、胶原、体雕和提升项目讲清楚。</h2>
+          </div>
+          <p>这类项目最重要的是先建立信任：适合人群、改善方向、体验流程、恢复提示和是否需要面诊，都要在预约前说清楚。</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="项目分类">
+          <button class="tab active" type="button" data-filter="all">全部</button>
+          <button class="tab" type="button" data-filter="face">面部护理</button>
+          <button class="tab" type="button" data-filter="collagen">微针胶原</button>
+          <button class="tab" type="button" data-filter="body">体雕</button>
+          <button class="tab" type="button" data-filter="lift">线雕/贴合</button>
+        </div>
+
+        <div class="service-grid" id="serviceGrid">
+          <article class="service-card" data-category="face">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=82" alt="女性面部护理体验">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>面部焕亮护理</h3>
+                <span class="price">¥398起</span>
+              </div>
+              <p>针对暗沉、干燥、粗糙和疲惫面容，进行清洁、补水、舒缓和光泽感管理。</p>
+              <div class="tags"><span class="tag">75分钟</span><span class="tag">新客推荐</span><span class="tag">可周期管理</span></div>
+              <button class="btn secondary select-service" type="button" data-service="面部护理"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="face">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=82" alt="女性面部轮廓护理">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>紧致轮廓护理</h3>
+                <span class="price">¥680起</span>
+              </div>
+              <p>围绕法令、苹果肌、下颌缘和面中饱满度做评估，适合初老和松垮趋势人群。</p>
+              <div class="tags"><span class="tag">90分钟</span><span class="tag">需评估</span><span class="tag">轮廓管理</span></div>
+              <button class="btn secondary select-service" type="button" data-service="面部护理"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="collagen">
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=900&q=82" alt="女性微针胶原护理">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>微针胶原管理</h3>
+                <span class="price">面诊定价</span>
+              </div>
+              <p>以胶原支持和肤质细腻度为方向，适合毛孔、纹理、痘坑浅表印迹等需求。</p>
+              <div class="tags"><span class="tag">需面诊</span><span class="tag">术后护理</span><span class="tag">周期方案</span></div>
+              <button class="btn secondary select-service" type="button" data-service="微针胶原"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="collagen">
+            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=82" alt="女性胶原修护肤质状态">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>胶原修护护理</h3>
+                <span class="price">¥880起</span>
+              </div>
+              <p>配合微针或能量类项目后的舒缓、保湿和修护管理，帮助稳定护理体验。</p>
+              <div class="tags"><span class="tag">修护期</span><span class="tag">舒缓补水</span><span class="tag">可搭配</span></div>
+              <button class="btn secondary select-service" type="button" data-service="微针胶原"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="body">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=82" alt="女性体态与肌肤线条管理">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>体雕线条管理</h3>
+                <span class="price">¥1280起</span>
+              </div>
+              <p>针对腰腹、手臂、大腿和背部线条做局部管理，适合需要轮廓感的人群。</p>
+              <div class="tags"><span class="tag">局部评估</span><span class="tag">轮廓线条</span><span class="tag">疗程制</span></div>
+              <button class="btn secondary select-service" type="button" data-service="体雕管理"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="body">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=82" alt="女性紧致肌肤状态">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>紧实塑形疗程</h3>
+                <span class="price">¥1980起</span>
+              </div>
+              <p>从围度、松弛度和肌肤紧实度出发，适合产后、减重后或局部松软需求。</p>
+              <div class="tags"><span class="tag">围度记录</span><span class="tag">紧实管理</span><span class="tag">会员疗程</span></div>
+              <button class="btn secondary select-service" type="button" data-service="体雕管理"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="lift">
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=900&q=82" alt="女性面部提升护理咨询">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>线雕提升咨询</h3>
+                <span class="price">面诊定价</span>
+              </div>
+              <p>针对下颌缘、面颊松弛、轮廓下垂等需求，先做面部结构与合规资质确认。</p>
+              <div class="tags"><span class="tag">需面诊</span><span class="tag">轮廓提升</span><span class="tag">合规评估</span></div>
+              <button class="btn secondary select-service" type="button" data-service="线雕提升"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+          <article class="service-card" data-category="lift">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=82" alt="女性皮肉贴合护理">
+            <div class="service-copy">
+              <div class="service-title">
+                <h3>皮肉贴合管理</h3>
+                <span class="price">¥1680起</span>
+              </div>
+              <p>围绕松弛、脂肪垫位移和轮廓模糊做综合管理，适合面部贴合度下降人群。</p>
+              <div class="tags"><span class="tag">面部贴合</span><span class="tag">下颌缘</span><span class="tag">复合方案</span></div>
+              <button class="btn secondary select-service" type="button" data-service="皮肉贴合"><i data-lucide="calendar-plus"></i>预约此项目</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Real Work</span>
+            <h2>用评估逻辑和案例方向建立第一层信任。</h2>
+          </div>
+          <p>轻医美与功效型项目更需要呈现改善方向、适合人群和护理边界，避免顾客只看价格做决定。</p>
+        </div>
+
+        <div class="gallery">
+          <figure class="gallery-main">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=85" alt="女性面部肌肤状态案例">
+            <figcaption class="caption">
+              <strong>面部光泽与紧致状态管理</strong>
+              <span>适合暗沉、疲惫、初老和轮廓感下降人群。</span>
+            </figcaption>
+          </figure>
+          <div class="gallery-side">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=85" alt="女性胶原修护案例方向">
+              <figcaption class="caption">
+                <strong>胶原修护与肤质细腻度</strong>
+                <span>围绕纹理、毛孔和屏障稳定做周期方案。</span>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=85" alt="女性面部护理空间">
+              <figcaption class="caption">
+                <strong>私密评估与护理空间</strong>
+                <span>适合面部、体雕和术后修护类项目咨询。</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="artists" id="artists">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Team</span>
+            <h2>把顾问和操作人员的擅长方向讲清楚。</h2>
+          </div>
+          <p>这类项目要让顾客知道谁负责评估、谁负责护理、谁跟踪恢复与周期反馈。</p>
+        </div>
+
+        <div class="artist-grid">
+          <article class="artist-card">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=82" alt="面部年轻化顾问林予">
+            <div>
+              <h3>林予</h3>
+              <p>面部年轻化顾问 · 初老评估与轮廓方案</p>
+            </div>
+          </article>
+          <article class="artist-card">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=700&q=82" alt="胶原护理师可然">
+            <div>
+              <h3>可然</h3>
+              <p>胶原护理师 · 微针术后修护与肤质管理</p>
+            </div>
+          </article>
+          <article class="artist-card">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=82" alt="体雕管理师舒宁">
+            <div>
+              <h3>舒宁</h3>
+              <p>体雕管理师 · 腰腹腿部线条与紧实管理</p>
+            </div>
+          </article>
+          <article class="artist-card">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=82" alt="提升项目顾问南希">
+            <div>
+              <h3>南希</h3>
+              <p>提升项目顾问 · 线雕咨询与皮肉贴合方案</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="membership">
+      <div class="shell member-layout">
+        <div class="member-visual">
+          <h2>从单次体验到周期方案，承接更高价值复购。</h2>
+        </div>
+        <div>
+          <div class="section-head" style="grid-template-columns: 1fr; margin-bottom: 20px;">
+            <div>
+              <span class="section-kicker">Membership</span>
+              <h2>会员方案</h2>
+            </div>
+          </div>
+          <div class="member-grid">
+            <article class="member-card">
+              <h3>面部焕新卡</h3>
+              <span class="price">¥1299</span>
+              <ul>
+                <li>3次面部护理</li>
+                <li>1次轮廓评估复盘</li>
+                <li>护理后肤况记录</li>
+              </ul>
+            </article>
+            <article class="member-card">
+              <h3>胶原管理卡</h3>
+              <span class="price">¥3980</span>
+              <ul>
+                <li>微针胶原方案咨询</li>
+                <li>术后修护护理组合</li>
+                <li>专属顾问跟踪反馈</li>
+              </ul>
+            </article>
+            <article class="member-card">
+              <h3>体雕疗程卡</h3>
+              <span class="price">¥5980</span>
+              <ul>
+                <li>局部围度记录</li>
+                <li>6次体雕紧实管理</li>
+                <li>阶段对比与方案调整</li>
+              </ul>
+            </article>
+            <article class="member-card">
+              <h3>提升综合方案</h3>
+              <span class="price">面诊定制</span>
+              <ul>
+                <li>线雕提升咨询</li>
+                <li>皮肉贴合管理</li>
+                <li>术前术后护理规划</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Reviews</span>
+            <h2>口碑模块要讲体验细节和变化感受。</h2>
+          </div>
+          <p>顾客更关心是否会被硬推、恢复期如何、方案是否适合自己，所以评价要围绕过程和服务透明度。</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>第一次来先做了面部评估，顾问把我适合和不适合的项目都讲清楚了，没有上来就推高价套餐。</p>
+            <strong>周女士</strong>
+            <span>初老评估 · 面部护理</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>做完胶原修护后护理师每天提醒注意事项，恢复期有人跟进会安心很多，肤质摸起来更细了。</p>
+            <strong>Echo</strong>
+            <span>微针胶原 · 修护护理</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>体雕不是只讲瘦，老师会先看我的腰腹和腿部线条，再记录围度，几次下来轮廓感更明显。</p>
+            <strong>梁先生</strong>
+            <span>体雕管理 · 腰腹线条</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Visit</span>
+            <h2>到店前把资质、评估和联系方式放清楚。</h2>
+          </div>
+          <p>涉及线雕、微针等项目时，网站要明确咨询流程、禁忌提醒、资质说明和后续跟踪方式。</p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-info">
+            <div class="info-row">
+              <i data-lucide="map-pin"></i>
+              <div>
+                <strong>上海市静安区愚园路 168 号 2F</strong>
+                <span>近地铁 2/7 号线，步行约 5 分钟</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <i data-lucide="clock-3"></i>
+              <div>
+                <strong>周一至周日 10:30 - 21:30</strong>
+                <span>晚间档位建议提前 1 天预约</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <i data-lucide="phone"></i>
+              <div>
+                <strong>021-8888-2688</strong>
+                <span>微信同号：LanjingBeauty</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <i data-lucide="shield-check"></i>
+              <div>
+                <strong>一客一档 · 面诊评估 · 术后跟踪</strong>
+                <span>护理记录、恢复反馈和周期复盘统一管理</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map" aria-label="门店位置示意图">
+            <div class="road one"></div>
+            <div class="road two"></div>
+            <div class="pin"><i data-lucide="sparkle"></i></div>
+            <div class="map-card">
+              <h3>澜境美学静安店</h3>
+              <p>建议将这里替换为高德地图、百度地图或腾讯地图组件，并补充执业资质展示。</p>
+              <a class="btn" href="#booking"><i data-lucide="navigation"></i>预约后导航</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">FAQ</span>
+            <h2>常见问题</h2>
+          </div>
+          <p>把客服每天重复回答的问题前置，能减少无效沟通，也能提高预约表单提交率。</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <strong>第一次来应该选哪个项目？</strong>
+            <p>建议先预约新客面诊，顾问会根据面部状态、预算、恢复期和禁忌情况安排方案。</p>
+          </div>
+          <div class="faq-item">
+            <strong>微针胶原和线雕能直接预约操作吗？</strong>
+            <p>建议先做面诊评估，确认适应情况、风险提示和护理周期后，再决定是否安排项目。</p>
+          </div>
+          <div class="faq-item">
+            <strong>体雕需要做几次？</strong>
+            <p>通常按局部状态和目标制定疗程，建议先做围度和松弛度记录，再分阶段复盘。</p>
+          </div>
+          <div class="faq-item">
+            <strong>可以接入线上支付吗？</strong>
+            <p>可以接入微信支付、支付宝、小程序预约或第三方美业系统。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div><strong>澜境美学</strong> · Face & Body Aesthetics</div>
+      <div>沪ICP备示例号 · 涉及医疗美容项目时请按当地法规补充资质与风险提示</div>
+    </div>
+  </footer>
+
+  <div class="mobile-dock" aria-label="移动端快捷操作">
+    <a class="btn secondary" href="tel:02188882688"><i data-lucide="phone-call"></i>电话</a>
+    <a class="btn rose" href="#booking"><i data-lucide="calendar-check"></i>预约</a>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      const menuBtn = document.querySelector("#menuBtn");
+      const navLinks = document.querySelector("#navLinks");
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+
+      const tabs = document.querySelectorAll(".tab");
+      const cards = document.querySelectorAll(".service-card");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((item) => item.classList.remove("active"));
+          tab.classList.add("active");
+          const filter = tab.dataset.filter;
+          cards.forEach((card) => {
+            const visible = filter === "all" || card.dataset.category === filter;
+            card.style.display = visible ? "grid" : "none";
+          });
+        });
+      });
+
+      const form = document.querySelector("#bookingForm");
+      const note = document.querySelector("#formNote");
+      const bookingList = document.querySelector("#bookingList");
+      const clearBookings = document.querySelector("#clearBookings");
+      const serviceSelect = document.querySelector("#service");
+      const storageKey = "lanjing-bookings";
+      let bookings = JSON.parse(localStorage.getItem(storageKey) || "[]");
+
+      const saveBookings = () => {
+        localStorage.setItem(storageKey, JSON.stringify(bookings));
+      };
+
+      const renderBookings = () => {
+        if (!bookings.length) {
+          bookingList.innerHTML = '<div class="record-item"><strong>暂无记录</strong><span>提交预约后会显示在这里。</span></div>';
+          return;
+        }
+
+        bookingList.innerHTML = bookings.map((item) => `
+          <div class="record-item">
+            <strong>${item.name} · ${item.service}</strong>
+            <span>${item.time} · ${item.phone}</span>
+          </div>
+        `).join("");
+      };
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const booking = {
+          name: formData.get("name") || "顾客",
+          phone: formData.get("phone") || "待补充",
+          service: formData.get("service") || "新客面诊",
+          time: formData.get("time") || "待确认"
+        };
+        bookings = [booking, ...bookings].slice(0, 6);
+        saveBookings();
+        renderBookings();
+        note.textContent = `${booking.name}，预约已记录。正式上线时这里可接入微信、短信或后台系统。`;
+        form.reset();
+      });
+
+      document.querySelectorAll(".select-service").forEach((button) => {
+        button.addEventListener("click", () => {
+          serviceSelect.value = button.dataset.service;
+          document.querySelector("#booking").scrollIntoView({ behavior: "smooth", block: "center" });
+          note.textContent = `已选择「${button.dataset.service}」，补充称呼和手机号即可预约。`;
+        });
+      });
+
+      clearBookings.addEventListener("click", () => {
+        bookings = [];
+        saveBookings();
+        renderBookings();
+        note.textContent = "本机预约记录已清空。";
+      });
+
+      renderBookings();
+    });
+  </script>
+</body>
+</html>
